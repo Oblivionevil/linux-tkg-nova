@@ -5,6 +5,14 @@ on:
       _cpusched:
         required: true
         type: string
+      kernel_version:
+        required: false
+        type: string
+        default: ""
+      config_file:
+        required: false
+        type: string
+        default: ""
 
 
 env:
@@ -29,6 +37,8 @@ jobs:
   build-kernel:
     env:
       _cpusched: ${{ inputs._cpusched }}
+      _version: ${{ inputs.kernel_version }}
+      _configfile: ${{ inputs.config_file }}
 
     runs-on: ubuntu-latest
     container: archlinux:latest
@@ -45,6 +55,10 @@ jobs:
 
       - name: Checkout linux-tkg
         uses: actions/checkout@v4
+
+      - name: Generate Linux 7 Nova config
+        if: inputs.config_file == 'linux-tkg-config/7.0-nova/config.x86_64'
+        run: bash ./linux-tkg-config/7.0-nova/generate-config.sh
 
       # 1. Install deps needed for building and sudo
       # 2. create a user "user" and give it passwordless sudo

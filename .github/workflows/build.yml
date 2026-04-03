@@ -25,9 +25,13 @@ jobs:
     uses: ./.github/workflows/arch-builder.yml
     with:
       _cpusched: eevdf
+      kernel_version: 7.0-latest
+      config_file: linux-tkg-config/7.0-nova/config.x86_64
 
   build-manual:
     if: github.event_name == 'workflow_dispatch'
     uses: ./.github/workflows/arch-builder.yml
     with:
       _cpusched: ${{ inputs._cpusched }}
+      kernel_version: 7.0-latest
+      config_file: linux-tkg-config/7.0-nova/config.x86_64
