@@ -30,6 +30,7 @@ _all_scheds=(
   ["muqss"]="Multiple Queue Skiplist Scheduler (MuQSS)"
   ["upds"]="TkG's Undead PDS"
   ["bore"]="Burst-Oriented Response Enhancer Scheduler (BORE)"
+  ["nova"]="NVIDIA's Nova scheduler for GPU optimization"
 )
 
 typeset -Ag _cpu_marchs
