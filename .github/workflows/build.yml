@@ -22,14 +22,12 @@ on:
 jobs:
   build-default:
     if: github.event_name != 'workflow_dispatch'
-    uses: ./.github/workflows/builder-dispatcher.yml
+    uses: ./.github/workflows/arch-builder.yml
     with:
-      os: arch
       _cpusched: eevdf
 
   build-manual:
     if: github.event_name == 'workflow_dispatch'
-    uses: ./.github/workflows/builder-dispatcher.yml
+    uses: ./.github/workflows/arch-builder.yml
     with:
-      os: arch
       _cpusched: ${{ inputs._cpusched }}
