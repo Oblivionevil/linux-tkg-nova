@@ -8,15 +8,6 @@ on:
   pull_request:
   workflow_dispatch:
     inputs:
-      os:
-        description: Builder OS
-        required: false
-        default: arch
-        type: choice
-        options:
-          - arch
-          - ubuntu
-          - fedora
       _cpusched:
         description: CPU scheduler
         required: false
@@ -40,5 +31,5 @@ jobs:
     if: github.event_name == 'workflow_dispatch'
     uses: ./.github/workflows/builder-dispatcher.yml
     with:
-      os: ${{ inputs.os }}
+      os: arch
       _cpusched: ${{ inputs._cpusched }}
