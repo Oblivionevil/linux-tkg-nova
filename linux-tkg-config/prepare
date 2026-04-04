@@ -898,7 +898,7 @@ _tkg_srcprep() {
 
   fi
 
-  if [ "${_cpusched}" = "nova" ] && [ "$_basekernel" = "7.0" ]; then
+  if [ "${_cpusched}" = "nova" ] && [ "$_kver" = "700" ]; then
     if [ -z "${_configfile}" ]; then
       _configfile="linux-tkg-config/7.0-nova/config.x86_64"
     fi
