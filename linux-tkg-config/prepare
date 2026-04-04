@@ -365,8 +365,6 @@ _set_cpu_scheduler() {
     _avail_cpu_scheds+=("muqss")
   elif [ "$_kver" = "513" ]; then
     _avail_cpu_scheds+=("muqss")
-  elif [ "$_kver" = "700" ]; then
-    _avail_cpu_scheds+=("nova")
   fi
 
   if [ "${_preempt_rt}" = "1" ]; then
@@ -896,17 +894,6 @@ _tkg_srcprep() {
     tkgpatch="$srcdir/0003-glitched-cfs.patch" && _tkg_patcher
   fi
 
-  fi
-
-  if [ "${_cpusched}" = "nova" ] && [ "$_kver" = "700" ]; then
-    if [ -z "${_configfile}" ]; then
-      _configfile="linux-tkg-config/7.0-nova/config.x86_64"
-    fi
-
-    if [ "${_configfile}" = "linux-tkg-config/7.0-nova/config.x86_64" ]; then
-      msg2 "Generating Linux 7 Nova config"
-      bash "${_where}/linux-tkg-config/7.0-nova/generate-config.sh"
-    fi
   fi
 
   if [ -z "${_configfile}" ]; then
