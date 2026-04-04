@@ -18,7 +18,6 @@ on:
           - bore
           - pds
           - bmq
-          - nova
 
 jobs:
   build-default:
